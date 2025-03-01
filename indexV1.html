@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue 3</title>
+    <!-- <script src="https://unpkg.com/vue@3.0.2"></script> -->
+    <script src="vue@3.0.2.js"></script>
+
+    <style>
+        .box{
+            width: 100px;
+            padding: 10px;
+            background-color: blanchedalmond;
+        }
+        li{
+            display: flex;
+            background-color: rgb(202, 245, 245);
+            padding: 10px;
+        }
+        .fav{
+            background-color: aqua;
+        }
+        img{width:100px}
+    </style>
+</head>
+<body>
+    <div id="app">
+       <p v-if=flg>
+        {{title}} - {{author}} - {{age}}
+       </p>
+       <button v-on:click="age++">Increase age</button>
+       <button @click="age--">Increase age</button>
+       <button @click="changeTitle('++')">Change Title</button>
+       <span @click="changeFlg">changeFlg</span>
+
+       <br><hr><br>
+       <span class="box" @mouseover="handleEvent">mouse over</span>
+       <span class="box" @mouseleave="handleEvent">mouse leave</span>
+       <span class="box" @dblclick="handleEvent">Double Click</span>
+       <span class="box" @mousemove="handleEvent">mouse move: {{x}},{{y}}</span>
+
+       <ul v-for="friend in filteredFriends">
+        <li :class="{fav:friend.isFav}" @click="friend.isFav=!friend.isFav">
+            <h3>{{friend.name}}</h3>
+            <h4>{{friend.family}}</h4>
+            <img :src="friend.img" :alt="friend.family" >
+        </li>
+       </ul>
+    
+       <a v-bind:href="url">Topon</a>
+       <a :href="url">Topon2</a>
+    </div>
+    <script src="appV1.js"></script>
+</body>
+</html>
